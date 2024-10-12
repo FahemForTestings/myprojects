@@ -54,6 +54,18 @@
 
     <div class="col-lg-8">
         {{-- Tasks --}}
+        @foreach ($project->tasks as $task)
+        <div class="card">
+            <div class="card-body">
+                <form action="" method="POST">
+                    @csrf
+                    <label for="title">اسم المهمة</label>
+                    <input type="text" name="body" class="form-control" placeholder="اكتب اسم المهمة">
+                    <button type="submit" class="btn btn-primary">أضف</button>
+                </form>
+            </div>
+        </div>
+        @endforeach
     </div>
 </div>
 @endsection
