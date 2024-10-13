@@ -11,12 +11,24 @@
         <div class="d-flex align-items-center me-4">
             <img src="/images/list-check.svg" alt="project created date">
             <div class="me-2">
-                {{-- {{count($project->tasks)}} --}}
+                @switch(count($project->tasks))
+                    @case(0)
+                            <span class="text-danger">لاتوجد مهام</span>
+                        @break
+                    @case(1)
+                        مهمة واحدة
+                        @break
+                    @case(2)
+                        مهمتين
+                        @break
+                    @default
+                    {{count($project->tasks)}} مهام
+                @endswitch
             </div>
         </div>
 
         <div class="d-flex align-items-center me-auto">
-            <form action="projects/{{$project->id}}" method="POST">
+            <form action="/projects/{{$project->id}}" method="POST">
                 @csrf
                 @method('DELETE')
                 <input type="submit" class="btn btn-delete" value="">

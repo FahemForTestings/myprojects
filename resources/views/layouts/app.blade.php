@@ -19,12 +19,16 @@
     <!-- My own styles -->
     <style>
         .btn-delete {
-            background: url('images/trash.svg');
+            background: url('/images/trash.svg');
             background-repeat: no-repeat;
             outline: none;
             background-size: 1.1rem 1.1rem;
             padding-left: 8px;
             border: 0;
+            height: 20px;
+        }
+        .checked {
+            text-decoration: line-through
         }
     </style>
 </head>
@@ -32,7 +36,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/projects') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
