@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
@@ -20,4 +21,6 @@ Route::patch('/projects/{project}/tasks/{task}', [TaskController::class, 'update
 
 Route::delete('/projects/{project}/tasks/{task}', [TaskController::class, 'destroy']);
 
+Route::get('/profile', [ProfileController::class, 'index']);
 
+Route::patch('/profile', [ProfileController::class, 'update']);

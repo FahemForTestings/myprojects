@@ -3,7 +3,7 @@
 @section('content')
     <header class="d-flex justify-content-between align-items-center my-5" dir="rtl">
         <div class="h6 text-dark">
-            <a href="/projects">المشاريع / {{ $project->title }}</a>
+            <a href="/projects">المشاريع</a> / {{ $project->title }}
         </div>
         <div>
             <a href="/projects/{{ $project->id }}/edit" class="btn btn-primary px-4" role="button">تعديل المشروع</a>
@@ -58,17 +58,32 @@
             {{-- Tasks --}}
             @foreach ($project->tasks as $task)
                 <div class="card d-flex flex-row">
+                    {{-- Task Body --}}
                     <div class="{{ $task->done ? 'checked' : '' }}">
                         {{ $task->body }}
                     </div>
+
+                    {{-- Edit the task --}}
                     <div class="me-auto">
                         <form action="/projects/{{ $project->id }}/tasks/{{ $task->id }}" method="POST">
                             @csrf
+                            @method('UPDATE')
+                            <input type="submit" class="btn btn-edit" value="">
+                        </form>
+                    </div>
+
+
+                    {{-- Done or not --}}
+                    <div class="d-flex align-items-center">
+                        <form action="/projects/{{ $project->id }}/tasks/{{ $task->id }}" method="POST">
+                            @csrf
                             @method('PATCH')
-                            <input type="checkbox" name="done" class="ms-2" {{ $task->done ? 'checked' : '' }}
+                            <input type="checkbox" name="done" class="mx-2" {{ $task->done ? 'checked' : '' }}
                                 onchange="this.form.submit()">
                         </form>
                     </div>
+
+                    {{-- Delete the task --}}
                     <div class="d-flex align-items-center">
                         <form action="/projects/{{ $project->id }}/tasks/{{ $task->id }}" method="POST">
                             @csrf
